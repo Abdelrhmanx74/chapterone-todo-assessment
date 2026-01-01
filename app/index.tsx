@@ -15,15 +15,13 @@ export default function Screen() {
     <>
       <Stack.Screen options={{ title: 'Todos', headerRight: () => <ThemeToggle /> }} />
 
-      <View className="flex-1 items-center justify-center gap-8 p-4">
-        <View className="flex-1 gap-2">
+      <View className="flex-1 items-center justify-center gap-4 p-4">
           {todos?.length === 0 ? (
             <Text>No todos available. Add some!</Text>
           ) : (
             todos.map((todo) => <Todo key={todo.id} {...todo} />)
           )}
           <TodoAddModal />
-        </View>
       </View>
     </>
   );

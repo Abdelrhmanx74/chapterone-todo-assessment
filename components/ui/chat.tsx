@@ -36,18 +36,15 @@ export default function Chat({ initialMessages = [], user = { _id: 1 } }: ChatPr
         wrapperStyle={{
           right: {
             backgroundColor: theme.primary,
-            paddingBottom: 4,
           },
           left: {
             backgroundColor: theme.secondary,
-            paddingBottom: 4,
           },
         }}
         textStyle={{
           right: { color: theme.primaryForeground },
           left: { color: theme.secondaryForeground },
         }}
-        bottomContainerStyle={{ right: { paddingBottom: 0 }, left: { paddingBottom: 0 } }}
         containerToNextStyle={{ right: { marginBottom: 2 }, left: { marginBottom: 2 } }}
         containerToPreviousStyle={{ right: { marginBottom: 2 }, left: { marginBottom: 2 } }}
       />
@@ -57,7 +54,7 @@ export default function Chat({ initialMessages = [], user = { _id: 1 } }: ChatPr
   const renderSend = (sendProps: any) => {
     const canSend = !!sendProps.text?.trim();
     return (
-      <Send {...sendProps} containerStyle={{ justifyContent: 'center', marginRight: 8 }}>
+      <Send {...sendProps}>
         <Button
           variant="default"
           size="icon"
@@ -77,11 +74,7 @@ export default function Chat({ initialMessages = [], user = { _id: 1 } }: ChatPr
       containerStyle={{
         backgroundColor: theme.input,
         borderTopColor: theme.border,
-        borderTopWidth: 1,
-        paddingVertical: 6,
-        paddingHorizontal: 8,
       }}
-      primaryStyle={{ alignItems: 'center' }}
     />
   );
 

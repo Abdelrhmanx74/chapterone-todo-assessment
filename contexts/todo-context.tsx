@@ -25,10 +25,12 @@ export function TodoProvider({ children }: { children: React.ReactNode }) {
 
   // Add a todo: update in-memory state and persist the new list
   const addTodo = async (todo: TODO): Promise<void> => {
+    console.log('Context: Adding todo', todo);
     try {
       const raw = await AsyncStorage.getItem(STORAGE_KEY);
       const prev = raw ? (JSON.parse(raw) as TODO[]) : todos;
       const next = [...prev, todo];
+      console.log('Context: New todo list length', next.length);
       setTodos(next);
       await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(next));
     } catch (e) {
@@ -53,7 +55,10 @@ export function TodoProvider({ children }: { children: React.ReactNode }) {
     try {
       const raw = await AsyncStorage.getItem(STORAGE_KEY);
       const prev = raw ? (JSON.parse(raw) as TODO[]) : todos;
-      const next = prev.map((todo) => (todo.id === updatedTodo.id ? updatedTodo : todo));
+      const targetId = Number(updatedTodo.id);
+      const next = prev.map((todo) =>
+        Number((todo as any).id) === targetId ? { ...updatedTodo, id: targetId } : todo
+      );
       setTodos(next);
       await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(next));
     } catch (e) {
@@ -65,7 +70,8 @@ export function TodoProvider({ children }: { children: React.ReactNode }) {
     try {
       const raw = await AsyncStorage.getItem(STORAGE_KEY);
       const prev = raw ? (JSON.parse(raw) as TODO[]) : todos;
-      const next = prev.filter((todo) => todo.id !== id);
+      const targetId = Number(id);
+      const next = prev.filter((todo) => Number((todo as any).id) !== targetId);
       setTodos(next);
       await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(next));
     } catch (e) {

@@ -39,7 +39,11 @@ const Todo = (todo: TODO) => {
           <Text className="text-sm text-muted-foreground">{todo.description}</Text>
         ) : null}
       </View>
-      <View className="flex-1">{todo.by_ai ? <Badge>By AI</Badge> : null}</View>
+      {todo.by_ai ? (
+        <Badge>
+          <Text>By AI</Text>
+        </Badge>
+      ) : null}
       <DropdownMenu>
         <DropdownMenuTrigger>
           <Icon as={EllipsisVertical} size={16} />

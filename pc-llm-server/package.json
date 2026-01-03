@@ -1,0 +1,13 @@
+{
+    "name": "pc-llm-server",
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "dev": "node server.mjs"
+    },
+    "dependencies": {
+        "cors": "^2.8.5",
+        "express": "^4.19.2",
+        "node-llama-cpp": "^3.14.5"
+    }
+}

@@ -1,13 +1,21 @@
-# Minimal Template
+# ChapterOne Todo Assessment
+React Native todo app
 
-This is a [React Native](https://reactnative.dev/) project built with [Expo](https://expo.dev/) and [React Native Reusables](https://reactnativereusables.com).
+## Stack
+**React Native** + **Expo** — cross-platform (iOS, Android, Web)
+**TypeScript** — type safety
+**Nativewind** — Tailwind CSS for native
+**React Native Reusables** — battle-tested UI primitives
 
-It was initialized using the following command:
+## Features
+Add/complete/delete todos
+Persistent state via Context
 
-```bash
-npx @react-native-reusables/cli@latest init -t ./
-```
+## Run
+```bash\npnpm dev\n```
+Press `i` (iOS), `a` (Android), or `w` (Web).
 
+<<<<<<< HEAD
 ## Getting Started
 
 To run the development server:
@@ -68,6 +76,35 @@ The easiest way to deploy your app is with [Expo Application Services (EAS)](htt
 - [EAS Updates](https://docs.expo.dev/eas-update/introduction/)
 - [EAS Submit](https://docs.expo.dev/submit/introduction/)
 
+## PC Local LLM Server (LAN)
+
+This repo includes a small Node.js server that runs GGUF models on your PC and exposes an HTTP API the phone can call (so models do not run on-device).
+
+1. Install server deps:
+
+```bash
+pnpm llm:server:install
+```
+
+2. Start the server (downloads models on first run):
+
+```bash
+pnpm llm:server
+```
+
+3. Point the Expo app at your PC (set your PC LAN IP):
+
+```bash
+set EXPO_PUBLIC_LLM_SERVER_URL=http://<YOUR_PC_IP>:3333
+pnpm dev
+```
+
+Make sure your PC and phone are on the same Wi‑Fi/LAN.
+
 ---
 
 If you enjoy using React Native Reusables, please consider giving it a ⭐ on [GitHub](https://github.com/founded-labs/react-native-reusables). Your support means a lot!
+=======
+## Structure
+**State Management**: TodoContext + AsyncStorage for persistent local state across sessions.
+>>>>>>> bc605f9540d15bd3338ca8d0cb0868d901be92ab

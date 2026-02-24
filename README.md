@@ -1,4 +1,3 @@
-# ChapterOne Todo Assessment
 React Native todo app
 
 ## Stack
